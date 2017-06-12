@@ -4,12 +4,20 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/authActions';
 
 class NavigationBar extends React.Component {
+
   logout(e) {
+    if (!localStorage.token) {
+      window.location.href = '/'
+    }
+
     e.preventDefault();
     this.props.logout();
   }
 
+
   render() {
+
+
     const { isAuthenticated } = this.props.auth;
 
     const userLinks = (
